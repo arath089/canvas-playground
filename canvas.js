@@ -5,18 +5,6 @@ canvas.height = window.innerHeight;
 
 var c = canvas.getContext('2d');
 
-// Multiple Circles at same location
-
-// for( var i=0; i<100; i++){
-//     var x = Math.random() * window.innerWidth;
-//     var y = Math.random() * window.innerHeight;
-//     c.beginPath();
-//     c.arc(x, y, 30, 0, Math.PI * 2, false);
-//     c.stroke();
-// }
-
-
-
 // Circle Object
 function Circle(x, y, dx, dy, radius) {
     this.x = x;
@@ -45,13 +33,12 @@ function Circle(x, y, dx, dy, radius) {
     }
 }
 
-
 var circleArray = [];
 
 for( var i= 0; i< 100; i++){
     var radius = 30;
-    var x = Math.random() * innerWidth;
-    var y = Math.random() * innerHeight;
+    var x = Math.random() * (innerWidth - radius * 2) + radius;
+    var y = Math.random() * (innerHeight - radius * 2 ) + radius;
     var dx = (Math.random() - 0.5) * 5;
     var dy = (Math.random() - 0.5) * 5;
 
