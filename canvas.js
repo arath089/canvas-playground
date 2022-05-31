@@ -6,7 +6,6 @@ canvas.height = window.innerHeight;
 var c = canvas.getContext('2d');
 
 var maxRadius = 30; 
-var minRadius = 2; 
 
 var colorArray = [
     '#ffaa33',
@@ -33,6 +32,7 @@ function Circle(x, y, dx, dy, radius) {
     this.dx = dx;
     this.dy = dy;
     this.radius = radius;
+    this.minRadius = radius;
     this.color = colorArray[Math.floor(Math.random() * colorArray.length)];
 
     this.draw = function(){       //Anonymous Draw function for drawing circles
@@ -59,7 +59,7 @@ function Circle(x, y, dx, dy, radius) {
                 this.radius += 1;
             }
         }
-        else if (this.radius > minRadius ){
+        else if (this.radius > this.minRadius ){
             this.radius -= 1;
         }
 
@@ -69,8 +69,8 @@ function Circle(x, y, dx, dy, radius) {
 
 var circleArray = [];
 
-for( var i= 0; i< 400; i++){
-    var radius = 30;
+for( var i= 0; i< 800; i++){
+    var radius = Math.random() * 3 + 1;
     var x = Math.random() * (innerWidth - radius * 2) + radius;
     var y = Math.random() * (innerHeight - radius * 2 ) + radius;
     var dx = (Math.random() - 0.5) * 2;
