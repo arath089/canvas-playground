@@ -8,11 +8,11 @@ var c = canvas.getContext('2d');
 var maxRadius = 40; 
 
 var colorArray = [
-    '#ffaa33',
-    '#99ffaa',
-    '#bb2376',
-    '#0ff000',
-    '#411aa1'
+    '#0367A6',
+    '#2E688C',
+    '#212426',
+    '#F2F2F2',
+    '#D99C79'
 ];
 
 var mouse = {                        //Get x and y value of our mouse
@@ -82,8 +82,8 @@ function init(){
         var radius = Math.random() * 3 + 1;
         var x = Math.random() * (innerWidth - radius * 2) + radius;
         var y = Math.random() * (innerHeight - radius * 2 ) + radius;
-        var dx = (Math.random() - 0.5) * 3;
-        var dy = (Math.random() - 0.5) * 3;
+        var dx = (Math.random() - 0.5) * 2;
+        var dy = (Math.random() - 0.5) * 2;
 
         circleArray.push(new Circle(x, y, dx, dy, radius));                //circleArray is going to push a new circle each time this for loop is ran through
     }
