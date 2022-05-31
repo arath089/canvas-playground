@@ -1,4 +1,6 @@
 *{
     margin: 0;
     background-color: #e7d6c4;
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
