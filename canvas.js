@@ -17,19 +17,24 @@ var c = canvas.getContext('2d');
 
 var radius = 30;
 var x = 200;
-var dx = 3;
 var y = 200;
+var dx = 3;
+var dy = 4;
 
 function animate(){             //creating an animate loop
     requestAnimationFrame(animate);
     c.clearRect(0, 0, innerWidth, innerHeight);
     c.beginPath();
-    c.arc(x, 200, radius, 0, Math.PI * 2, false);
+    c.arc(x, y, radius, 0, Math.PI * 2, false);
     c.stroke();
     if( x + radius > innerWidth || x - radius < 0 ){
         dx = -dx;
     }
+    if( y + radius > innerHeight || y - radius < 0 ){
+        dy = -dy;
+    }
     x += dx;
+    y += dy;
 }
 
 animate();
