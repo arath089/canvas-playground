@@ -5,7 +5,7 @@ canvas.height = window.innerHeight;
 
 var c = canvas.getContext('2d');
 
-var maxRadius = 30; 
+var maxRadius = 40; 
 
 var colorArray = [
     '#ffaa33',
@@ -23,6 +23,13 @@ var mouse = {                        //Get x and y value of our mouse
 window.addEventListener('mousemove', function(event){
     mouse.x = event.x;
     mouse.y = event.y;
+})
+
+//Event Listener for Resizing
+window.addEventListener('resize', function(){
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    init();
 })
 
 // Circle Object
@@ -69,16 +76,18 @@ function Circle(x, y, dx, dy, radius) {
 
 var circleArray = [];
 
-for( var i= 0; i< 800; i++){
-    var radius = Math.random() * 3 + 1;
-    var x = Math.random() * (innerWidth - radius * 2) + radius;
-    var y = Math.random() * (innerHeight - radius * 2 ) + radius;
-    var dx = (Math.random() - 0.5) * 2;
-    var dy = (Math.random() - 0.5) * 2;
+function init(){
+    circleArray = [];
+    for( var i= 0; i< 800; i++){
+        var radius = Math.random() * 3 + 1;
+        var x = Math.random() * (innerWidth - radius * 2) + radius;
+        var y = Math.random() * (innerHeight - radius * 2 ) + radius;
+        var dx = (Math.random() - 0.5) * 3;
+        var dy = (Math.random() - 0.5) * 3;
 
-    circleArray.push(new Circle(x, y, dx, dy, radius));                //circleArray is going to push a new circle each time this for loop is ran through
+        circleArray.push(new Circle(x, y, dx, dy, radius));                //circleArray is going to push a new circle each time this for loop is ran through
+    }
 }
-
 
 function animate(){             //creating an animate loop
     requestAnimationFrame(animate);
@@ -89,4 +98,5 @@ function animate(){             //creating an animate loop
     }
 }
 
+init();
 animate();
