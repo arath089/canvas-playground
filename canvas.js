@@ -5,6 +5,19 @@ canvas.height = window.innerHeight;
 
 var c = canvas.getContext('2d');
 
+var maxRadius = 30; 
+var minRadius = 2; 
+
+var mouse = {                        //Get x and y value of our mouse
+    x: undefined,
+    y: undefined
+}
+//Event Listener for Interactivity
+window.addEventListener('mousemove', function(event){
+    mouse.x = event.x;
+    mouse.y = event.y;
+})
+
 // Circle Object
 function Circle(x, y, dx, dy, radius) {
     this.x = x;
@@ -17,6 +30,7 @@ function Circle(x, y, dx, dy, radius) {
         c.beginPath();
         c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
         c.stroke();
+        c.fill();
     }
 
     this.update= function(){    //Update function to update the values
@@ -29,18 +43,29 @@ function Circle(x, y, dx, dy, radius) {
         this.x += this.dx;
         this.y += this.dy;
 
+        //interactivity
+        if( mouse.x - this.x < 50 && mouse.x - this.x > -50
+            && mouse.y - this.y < 50 && mouse.y - this.y > -50){
+            if (this.radius < maxRadius ){
+                this.radius += 1;
+            }
+        }
+        else if (this.radius > minRadius ){
+            this.radius -= 1;
+        }
+
         this.draw();
     }
 }
 
 var circleArray = [];
 
-for( var i= 0; i< 100; i++){
+for( var i= 0; i< 400; i++){
     var radius = 30;
     var x = Math.random() * (innerWidth - radius * 2) + radius;
     var y = Math.random() * (innerHeight - radius * 2 ) + radius;
-    var dx = (Math.random() - 0.5) * 5;
-    var dy = (Math.random() - 0.5) * 5;
+    var dx = (Math.random() - 0.5) * 2;
+    var dy = (Math.random() - 0.5) * 2;
 
     circleArray.push(new Circle(x, y, dx, dy, radius));                //circleArray is going to push a new circle each time this for loop is ran through
 }
