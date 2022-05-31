@@ -5,14 +5,12 @@ canvas.height = window.innerHeight;
 
 var c = canvas.getContext('2d');
 
-// Rectangle
-c.fillRect(100, 100, 200, 200);
-c.fillRect(300, 300, 200, 200);
-c.fillRect(600, 400, 200, 200);
-
 // Multiple Circles at same location
 
-for( var i=0; i<3; i++){
-    c.arc(800, 300, 30, 0, Math.PI * 2, false);
+for( var i=0; i<100; i++){
+    var x = Math.random() * window.innerWidth;
+    var y = Math.random() * window.innerHeight;
+    c.beginPath();
+    c.arc(x, y, 30, 0, Math.PI * 2, false);
     c.stroke();
 }
