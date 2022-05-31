@@ -8,6 +8,14 @@ var c = canvas.getContext('2d');
 var maxRadius = 30; 
 var minRadius = 2; 
 
+var colorArray = [
+    '#ffaa33',
+    '#99ffaa',
+    '#bb2376',
+    '#0ff000',
+    '#411aa1'
+];
+
 var mouse = {                        //Get x and y value of our mouse
     x: undefined,
     y: undefined
@@ -25,11 +33,12 @@ function Circle(x, y, dx, dy, radius) {
     this.dx = dx;
     this.dy = dy;
     this.radius = radius;
+    this.color = colorArray[Math.floor(Math.random() * colorArray.length)];
 
     this.draw = function(){       //Anonymous Draw function for drawing circles
         c.beginPath();
         c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
-        c.stroke();
+        c.fillStyle = this.color;
         c.fill();
     }
 
