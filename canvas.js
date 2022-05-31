@@ -10,6 +10,9 @@ c.fillRect(100, 100, 200, 200);
 c.fillRect(300, 300, 200, 200);
 c.fillRect(600, 400, 200, 200);
 
-// Circle
-c.arc(800, 300, 30, 0, Math.PI * 2, false);
-c.stroke();
+// Multiple Circles at same location
+
+for( var i=0; i<3; i++){
+    c.arc(800, 300, 30, 0, Math.PI * 2, false);
+    c.stroke();
+}
