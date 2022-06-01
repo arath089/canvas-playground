@@ -32,6 +32,12 @@ window.addEventListener('resize', function(){
     init();
 })
 
+//Event Listener for Interactivity for Mobile
+window.addEventListener('touchmove', function(event){
+    mouse.x = event.touches[0].clientX;
+    mouse.y = event.touches[0].clientY;
+})
+
 // Circle Object
 function Circle(x, y, dx, dy, radius) {
     this.x = x;
